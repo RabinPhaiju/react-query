@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
+import { QueryClientProvider, QueryClient } from "react-query"
+import { Homepage } from "./components/Homepage"
+import { SuperHeros } from "./components/SuperHeros"
+import { RQSuperHeros } from "./components/RQSuperHeros"
+import "./App.css"
+
+const queryClient = new QueryClient()
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to='/'>Home</Link>
+              </li>
+              <li>
+                <Link to='/super-heroes'>Traditional Super Heroes</Link>
+              </li>
+              <li>
+                <Link to='/rq-super-heroes'>RQ Super Heroes</Link>
+              </li>
+            </ul>
+          </nav>
+          <Switch>
+            <Route path='/super-heroes'>
+              <SuperHeros />
+            </Route>
+            <Route path='/rq-super-heroes'>
+              <RQSuperHeros />
+            </Route>
+            <Route path='/'>
+              <Homepage />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </QueryClientProvider>
+  )
 }
 
-export default App;
+export default App
