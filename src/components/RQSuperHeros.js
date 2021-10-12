@@ -12,6 +12,10 @@ export const RQSuperHeros = () => {
   // background refetch is done,when page on focus, if the db is changed.
   const { isLoading, data, isError, error, isFetching } = useQuery("super-heros", fetchSuperHeros, {
     cacheTime: 5000,
+
+    staleTime: 30000, // decrease no of request.
+    // wont fetch in background for 30 sec. | we are sure that list of heros wont change frequently.
+    // fresh flag instead of stale or inactive.
   })
 
   console.log(isLoading, isFetching)
