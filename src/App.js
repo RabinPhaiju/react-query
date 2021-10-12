@@ -4,6 +4,7 @@ import { ReactQueryDevtools } from "react-query/devtools" // Added react-query d
 import { Homepage } from "./components/Homepage"
 import { SuperHeros } from "./components/SuperHeros"
 import { RQSuperHeros } from "./components/RQSuperHeros"
+import { RQSuperHeroOnClick } from "./components/RQSuperHeroOnClick"
 import "./App.css"
 
 const queryClient = new QueryClient() // Added react-query
@@ -24,6 +25,9 @@ function App() {
               <li>
                 <Link to='/rq-super-heroes'>RQ Super Heroes</Link>
               </li>
+              <li>
+                <Link to='/rq-super-heroes-click'>RQ Super Heroes on Button</Link>
+              </li>
             </ul>
           </nav>
           <Switch>
@@ -32,6 +36,9 @@ function App() {
             </Route>
             <Route path='/rq-super-heroes'>
               <RQSuperHeros />
+            </Route>
+            <Route path='/rq-super-heroes-click'>
+              <RQSuperHeroOnClick />
             </Route>
             <Route path='/'>
               <Homepage />
