@@ -7,7 +7,7 @@ const fetchSuperHeros = () => {
 }
 
 export const RQSuperHeros = () => {
-  // require 2 key, (unique key and function that returns a promise), third is cacheTime.
+  // require 2 key, (unique key and function that returns a promise), third is object.
   // fetch are cache for 5 min.
   // background refetch is done,when page on focus, if the db is changed.
   const { isLoading, data, isError, error, isFetching } = useQuery("super-heros", fetchSuperHeros, {
@@ -20,6 +20,10 @@ export const RQSuperHeros = () => {
     refetchOnMount: true, //{'always'} query will refetch on mount -> true is best option
 
     refetchOnWindowFocus: true, // when gain focus, data is fetch. -> default true is best option.
+
+    refetchInterval: 2000, // default-> false | 2000 -> refetch 2 sec. << If broswer is on focus >>
+
+    refetchIntervalInBackground: true, // refetch even if broswer is not in focus.
   })
 
   console.log(isLoading, isFetching)
