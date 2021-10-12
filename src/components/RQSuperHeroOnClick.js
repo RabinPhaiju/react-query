@@ -21,8 +21,14 @@ export const RQSuperHeroOnClick = () => {
     {
       onSuccess: onSuccess, //  call function on success fetch
       onError: onError,
-      enabled: false,
-      // How to refetch data in interval, with a button to trigger on first.
+
+      select: (data) => {
+        // data transformation and filtering
+        const superHeroNames = data.data.map((hero) => hero.name)
+        return superHeroNames
+      },
+
+      enabled: false, // How to refetch data in interval, with a button to trigger on first.
     }
   )
 
@@ -40,12 +46,8 @@ export const RQSuperHeroOnClick = () => {
     <div>
       <h2>React Query fetch on button click Super Hero</h2>
       <button onClick={refetch}>Fetch Now</button>
-      {data?.data.map((hero) => {
-        return (
-          <div key={hero.id}>
-            {hero.name} {hero.alterEgo}
-          </div>
-        )
+      {data?.map((heroName) => {
+        return <div key={heroName}>{heroName}</div>
       })}
     </div>
   )
