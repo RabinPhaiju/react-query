@@ -7,8 +7,14 @@ const fetchSuperHeros = () => {
 }
 
 export const RQSuperHeros = () => {
-  // require 2 key, (unique key and function that returns a promise)
-  const { isLoading, data, isError, error } = useQuery("super-heros", fetchSuperHeros)
+  // require 2 key, (unique key and function that returns a promise), third is cacheTime.
+  // fetch are cache for 5 min.
+  // background refetch is done,when page on focus, if the db is changed.
+  const { isLoading, data, isError, error, isFetching } = useQuery("super-heros", fetchSuperHeros, {
+    cacheTime: 5000,
+  })
+
+  console.log(isLoading, isFetching)
 
   if (isLoading) {
     return <h2>Loading..</h2>
