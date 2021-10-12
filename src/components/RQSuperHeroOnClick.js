@@ -7,11 +7,22 @@ const fetchSuperHeros = () => {
 }
 
 export const RQSuperHeroOnClick = () => {
+  const onSuccess = (data) => {
+    console.log("Perform side effect after data fetching", data)
+  }
+
+  const onError = (data) => {
+    console.log("Perfom side effect after encountering error", data)
+  }
+
   const { isLoading, data, isError, error, isFetching, refetch } = useQuery(
     "super-heros",
     fetchSuperHeros,
     {
+      onSuccess: onSuccess, //  call function on success fetch
+      onError: onError,
       enabled: false,
+      // How to refetch data in interval, with a button to trigger on first.
     }
   )
 
