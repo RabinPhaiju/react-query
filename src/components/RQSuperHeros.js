@@ -11,11 +11,15 @@ export const RQSuperHeros = () => {
   // fetch are cache for 5 min.
   // background refetch is done,when page on focus, if the db is changed.
   const { isLoading, data, isError, error, isFetching } = useQuery("super-heros", fetchSuperHeros, {
-    cacheTime: 5000,
+    cacheTime: 5000, // Default
 
     staleTime: 30000, // decrease no of request.
     // wont fetch in background for 30 sec. | we are sure that list of heros wont change frequently.
     // fresh flag instead of stale or inactive.
+
+    refetchOnMount: true, //{'always'} query will refetch on mount -> true is best option
+
+    refetchOnWindowFocus: true, // when gain focus, data is fetch. -> default true is best option.
   })
 
   console.log(isLoading, isFetching)
