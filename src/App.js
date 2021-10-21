@@ -9,6 +9,7 @@ import "./App.css"
 import { UseHookSuperHeros } from "./components/UseHookSuperHeros"
 import { RQSuperHero } from "./components/RQSuperHero"
 import { ParallelQueries } from "./components/ParallelQueries"
+import { DynamicParallelQueries } from "./components/DynamicParallelQueries"
 
 const queryClient = new QueryClient() // Added react-query
 
@@ -33,10 +34,19 @@ function App() {
               </li>
               <li>
                 <Link to='/rq-super-heroes-hook'>RQ Super Heroes Hook</Link>
+              </li>
+              <li>
+                <Link to='/rq-parallel'>RQ Parallel</Link>
               </li>{" "}
+              <li>
+                <Link to='/rq-dynamic-parallel'>RQ Dynamic Parallel</Link>
+              </li>
             </ul>
           </nav>
           <Switch>
+            <Route path='/rq-dynamic-parallel'>
+              <DynamicParallelQueries heroIds={[1, 3]} />
+            </Route>
             <Route path='/rq-parallel'>
               <ParallelQueries />
             </Route>
