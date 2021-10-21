@@ -4,12 +4,9 @@ import { useSuperHeroData } from "../hooks/useSuperHeroData"
 
 export const RQSuperHero = () => {
   const { heroId } = useParams()
-  const { isLoading, data, isError, error, isFetching, refetch } = useSuperHeroData(heroId)
-  useEffect(() => {
-    refetch()
-  }, [])
+  const { isLoading, data, isError, error } = useSuperHeroData(heroId)
 
-  if (isLoading || isFetching) {
+  if (isLoading) {
     return <h2>Loading..</h2>
   }
 
@@ -19,8 +16,9 @@ export const RQSuperHero = () => {
   return (
     <div>
       <h2>React Query Super Hero Detail</h2>
-      <h1>{data?.data.name}</h1>
-      <h2>{data?.data.alterEgo}</h2>
+      <h4>
+        {data?.data.name} - {data?.data.alterEgo}
+      </h4>
     </div>
   )
 }

@@ -8,6 +8,7 @@ import { RQSuperHeroOnClick } from "./components/RQSuperHeroOnClick"
 import "./App.css"
 import { UseHookSuperHeros } from "./components/UseHookSuperHeros"
 import { RQSuperHero } from "./components/RQSuperHero"
+import { ParallelQueries } from "./components/ParallelQueries"
 
 const queryClient = new QueryClient() // Added react-query
 
@@ -36,9 +37,12 @@ function App() {
             </ul>
           </nav>
           <Switch>
+            <Route path='/rq-parallel'>
+              <ParallelQueries />
+            </Route>
             <Route path='/rq-super-heroes/:heroId'>
               <RQSuperHero />
-            </Route>{" "}
+            </Route>
             <Route path='/super-heroes'>
               <SuperHeros />
             </Route>
