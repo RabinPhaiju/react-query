@@ -1,5 +1,6 @@
 import React from "react"
 import { useQuery } from "react-query"
+import { Link } from "react-router-dom"
 import axios from "axios"
 
 const fetchSuperHeros = () => {
@@ -42,7 +43,7 @@ export const RQSuperHeros = () => {
       {data?.data.map((hero) => {
         return (
           <div key={hero.id}>
-            {hero.name} {hero.alterEgo}
+            <Link to={`/rq-super-heroes/${hero.id}`}>{hero.name}</Link>
           </div>
         )
       })}

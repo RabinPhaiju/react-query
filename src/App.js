@@ -7,6 +7,7 @@ import { RQSuperHeros } from "./components/RQSuperHeros"
 import { RQSuperHeroOnClick } from "./components/RQSuperHeroOnClick"
 import "./App.css"
 import { UseHookSuperHeros } from "./components/UseHookSuperHeros"
+import { RQSuperHero } from "./components/RQSuperHero"
 
 const queryClient = new QueryClient() // Added react-query
 
@@ -28,13 +29,16 @@ function App() {
               </li>
               <li>
                 <Link to='/rq-super-heroes-click'>RQ Super Heroes on Button</Link>
-              </li>{" "}
+              </li>
               <li>
                 <Link to='/rq-super-heroes-hook'>RQ Super Heroes Hook</Link>
-              </li>
+              </li>{" "}
             </ul>
           </nav>
           <Switch>
+            <Route path='/rq-super-heroes/:heroId'>
+              <RQSuperHero />
+            </Route>{" "}
             <Route path='/super-heroes'>
               <SuperHeros />
             </Route>
