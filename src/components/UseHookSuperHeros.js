@@ -1,21 +1,21 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useSuperHerosData } from "../hooks/useSuperHerosData"
 
-export const RQSuperHeroOnClick = () => {
+export const UseHookSuperHeros = () => {
   const onSuccess = (data) => {
-    console.log("Perform side effect after data fetching", data)
+    console.log("Data fetch successfully", data)
   }
-
   const onError = (data) => {
-    console.log("Perfom side effect after encountering error", data)
+    console.log("Data fetch error", data)
   }
-
   const { isLoading, data, isError, error, isFetching, refetch } = useSuperHerosData(
     onSuccess,
     onError
   )
 
-  console.log(isLoading, isFetching)
+  useEffect(() => {
+    refetch()
+  }, [])
 
   if (isLoading || isFetching) {
     return <h2>Loading..</h2>
@@ -27,8 +27,7 @@ export const RQSuperHeroOnClick = () => {
 
   return (
     <div>
-      <h2>React Query fetch on button click Super Hero</h2>
-      <button onClick={refetch}>Fetch Now</button>
+      <h2>React Query fetch on data using hook Super Hero</h2>
       {data?.map((heroName) => {
         return <div key={heroName}>{heroName}</div>
       })}
