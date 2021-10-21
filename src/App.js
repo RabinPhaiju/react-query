@@ -10,6 +10,7 @@ import { UseHookSuperHeros } from "./components/UseHookSuperHeros"
 import { RQSuperHero } from "./components/RQSuperHero"
 import { ParallelQueries } from "./components/ParallelQueries"
 import { DynamicParallelQueries } from "./components/DynamicParallelQueries"
+import { DependedQueries } from "./components/DependedQueries"
 
 const queryClient = new QueryClient() // Added react-query
 
@@ -40,10 +41,16 @@ function App() {
               </li>{" "}
               <li>
                 <Link to='/rq-dynamic-parallel'>RQ Dynamic Parallel</Link>
+              </li>{" "}
+              <li>
+                <Link to='/rq-depend'>RQ Depend</Link>
               </li>
             </ul>
           </nav>
           <Switch>
+            <Route path='/rq-depend'>
+              <DependedQueries email='rabinphaiju@gmail.com' />
+            </Route>{" "}
             <Route path='/rq-dynamic-parallel'>
               <DynamicParallelQueries heroIds={[1, 3]} />
             </Route>

@@ -28,6 +28,18 @@
         "id":3,
         "name":"Rachel Green"
       }
+    ],
+    "users":[
+      {
+        "id":"rabinphaiju@gmail.com",
+        "channelId":"react-query"
+      }
+    ],
+    "channels":[
+      {
+        "id":"react-query",
+        "courses":["react","vue","angular"]
+      }
     ]
   }
   
