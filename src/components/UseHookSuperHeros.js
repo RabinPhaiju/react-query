@@ -15,7 +15,7 @@ export const UseHookSuperHeros = () => {
 
   useEffect(() => {
     refetch()
-  }, [])
+  }, [refetch])
 
   if (isLoading || isFetching) {
     return <h2>Loading..</h2>

@@ -16,15 +16,15 @@ export const DynamicParallelQueries = ({ heroIds }) => {
     })
   )
   console.log(queryResults)
+
   return (
     <div>
       <h2>Dynamic Parallel Page</h2>
-      {queryResults.map((result) => {
+      {queryResults?.map((result) => {
         return (
-          <h2 key={result.data.data.id}>
-            {" "}
-            {result.data.data.name}-{result.data.data.alterEgo}
-          </h2>
+          <div key={result.data?.data.id}>
+            {result.data?.data.name}-{result.data?.data.alterEgo}
+          </div>
         )
       })}
     </div>
