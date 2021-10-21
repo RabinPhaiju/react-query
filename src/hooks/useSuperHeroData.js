@@ -7,5 +7,21 @@ const fetchSuperHero = ({ queryKey }) => {
 }
 
 export const useSuperHeroData = (heroId) => {
-  return useQuery(["super-hero", heroId], fetchSuperHero)
+  const queryClient = useQueryClient() // cache initial query data
+  return useQuery(["super-hero", heroId], fetchSuperHero, {
+    initialData: () => {
+      // cache initial query data
+      const hero = queryClient
+        .getQueryData("super-heros")
+        ?.data?.find((hero) => hero.id === parseInt(heroId))
+
+      if (hero) {
+        return {
+          data: hero,
+        }
+      } else {
+        return undefined
+      }
+    },
+  })
 }
