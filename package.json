@@ -2,7 +2,7 @@
   "name": "react-query1",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://rabinphaiju.github.io/Tinymce-React-Demo/",
+  "homepage": "https://rabinphaiju.github.io/react-query/",
   "dependencies": {
     "@babel/core": "^7.26.9",
     "@testing-library/jest-dom": "^5.14.1",
